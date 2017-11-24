@@ -15,7 +15,7 @@
   import Item from './Item.vue';
 
   export default {
-    name: "Map",
+    name: "GroundPlan",
     components: {
       Item
     },

@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <Map />
+    <GroundPlan />
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld'
-import Map from './components/Map.vue'
+import GroundPlan from './components/GroundPlan.vue'
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
-    Map
+    GroundPlan
   }
 }
 </script>
