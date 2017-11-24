@@ -1,17 +1,13 @@
 import axios from 'axios';
 
+const instance = axios.create({
+    baseURL: 'http://localhost:8081/api/'
+})
+
 export default {
     getAll() {
-        return axios.get('http://localhost:8081/api/Epc/GetAll')
-        .then(response => {
+        return instance.get('Epc/GetAll').then(response => {
             console.log(response);
         });
     },
-
-    getA() {
-        return axios.get('http://localhost:8081/api/Epc/GetAll')
-        .then(response => {
-            console.log(response);
-        });
-    }
 }
