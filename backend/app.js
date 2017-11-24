@@ -11,7 +11,7 @@ var IP                  = process.env.IP,
 app.use(bodyParser.urlencoded({extended: true}));
 
 // REST routes
- app.use("/api", apiRoutes);
+app.use("/api", apiRoutes);
 
 app.get("/", (req, res) => {
     res.send("API");
