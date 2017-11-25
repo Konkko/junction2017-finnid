@@ -25,6 +25,9 @@ export default {
     setInterval(() => {
       this.getAll();
     }, 5000);
+
+    this.itemToStall({x: 525, y: 525})
+
   },
   methods: {
     getAll() {
@@ -32,6 +35,42 @@ export default {
         this.items = x.map(this.epcToItem);
         console.log(this.items);
       });
+    },
+    itemToStall(location) {
+      let bestIndex = -1;
+      let bestDelta = Number.MAX_VALUE;
+
+      const tolerance = 5.0;
+
+      for (let s = 0; s < demoData.stalls.length; s++) {
+        const stallLocation = demoData.stalls[s].location;
+        
+        const dx1 = location.x - stallLocation.x;
+        const dx2 = location.x - (stallLocation.x + stallLocation.width);
+        let dx = Math.abs(dx1 + dx2);
+        dx -= stallLocation.width;
+        dx = Math.max(0, dx);
+
+        const dy1 = location.y - stallLocation.y;
+        const dy2 = location.y - (stallLocation.y + stallLocation.height);
+        let dy = Math.abs(dy1 + dy2);
+        dy -= stallLocation.height;
+        dy = Math.max(0, dy);
+
+        const delta = Math.sqrt((dx*dx) + (dy*dy));
+
+        if (delta < bestDelta && delta <= tolerance) {
+          bestDelta = delta;
+          bestIndex = s;
+        }
+      }
+
+      if (bestIndex >= 0) {
+        return demoData.stalls[bestIndex].id;
+      }
+      else {
+        return null;
+      }
     },
     epcToItem(epc) {
       const epcCodeToProductId = str => {
@@ -45,12 +84,15 @@ export default {
 
       const worldScale = 1.0;
 
+      const location = {
+        x: epc.xlocation * worldScale,
+        y: epc.ylocation * worldScale
+      }
+
       return {
         productId: epcCodeToProductId(epc.epcCode),
-        lastLocation: {
-          x: epc.xlocation * worldScale,
-          y: epc.ylocation * worldScale
-        }
+        lastLocation: location,
+        stallId: this.itemToStall(location) 
       }
     }
   },
