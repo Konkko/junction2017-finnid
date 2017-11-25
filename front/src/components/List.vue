@@ -1,10 +1,19 @@
 <template>
   <div>
-    <H1>Menu</H1>
+    <modal v-if="showStatisticsModal" @close="showStatisticsModal = false">
+      <h3 slot="header">Statistics:</h3>
+      <div slot="body">
+        <!--<div class="stall-item" v-for="item in modalItems.items">-->
+          <!--ProductId: {{ item.productId }}-->
+        <!--</div>-->
+        Much important analytics things...
+      </div>
+    </modal>
+
     <div class="checkboxes-div">
       <input type="checkbox" v-model="heatmap">Show heatmap<br />
       <input type="checkbox" v-model="checked">Show history<br /><br />
-      <button class="button">Statistics</button>
+      <button class="button" @click="showStatistics()">Statistics</button>
     </div>
 
     <p style="color: black">Choose a product:</p>
@@ -54,7 +63,8 @@
         selectedId: null,
         lastSelected: null,
         heatmap: false,
-        checked: false
+        checked: false,
+        showStatisticsModal: false
       }
     },
     watch: {
@@ -88,6 +98,9 @@
             }
           });
         });
+      },
+      showStatistics() {
+        this.showStatisticsModal = true;
       }
     }
   }
