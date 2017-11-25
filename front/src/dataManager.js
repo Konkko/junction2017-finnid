@@ -9,7 +9,7 @@ const inputScale = 1/2.0;
 
 function transformEpc(epc) {
     epc.xlocation = (epc.xlocation * inputScale) + (demoData.dimensions.width / 2.0) - 150;
-    epc.ylocation = (epc.ylocation * inputScale) + (demoData.dimensions.height / 2.0) - 150;
+    epc.ylocation = (epc.ylocation * inputScale) + (demoData.dimensions.height / 2.0) - 100;
 }
 
 export default {

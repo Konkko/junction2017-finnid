@@ -65,6 +65,9 @@ export default {
   .stall {
     border: 2px solid black;
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .status-empty {
