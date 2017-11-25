@@ -18,7 +18,7 @@ module.exports = {
                     global.EPC = global.EPC.concat(newValues);
                 }
             })}
-            ,5000);
+            ,1000);
     }
 
 }
