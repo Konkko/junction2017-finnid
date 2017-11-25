@@ -33,7 +33,7 @@
             dm.getByEpc(this.item.epc, 10).then(x => {
                 this.historyPoints = x;
             });
-        }, 5000);    
+        }, 2000);    
     }
   }
 </script>
