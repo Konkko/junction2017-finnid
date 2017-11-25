@@ -1,12 +1,23 @@
 <template>
   <div class="list-item" v-on:click="isClicked" :selectedId="selectedId" :style="generateStyles()">
-      {{ name }} ({{ product.length }})
+      <span class="name">{{ name }}</span><span class="amount">({{ product.length }})</span>
   </div>
 </template>
 
 <style>
+  .list-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
   .list-item:hover {
     background-color: #e5e7e8;
+  }
+  .name {
+    text-align: left;
+  }
+  .amount {
+    text-align: right;
   }
 </style>
 
