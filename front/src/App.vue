@@ -28,8 +28,9 @@ export default {
   },
   methods: {
     getAll() {
-      this.epcs = dataManager.getAllEpcs();
-      console.log(this.epcs);
+      dataManager.getAllEpcs().then(x => {
+        console.log(x);
+      });
     }
   },
   data() {
