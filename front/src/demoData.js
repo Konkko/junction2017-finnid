@@ -188,24 +188,27 @@ let stalls = [
     }
 ]
 
-const scale = 1.8;
+const scale = 2.0;
 const dimensions = {
-    width: 525,
-    height: 500,
+    width: 475,
+    height: 450,
 }
 
-function transform(a) {
+function transformX(a) {
+    return (a - 101) * scale;
+}
+
+function transformY(a) {
     return (a - 50) * scale;
 }
-
 
 
 stalls.forEach(s => {
     s.location = {
         width: s.location.width * scale,
         height: s.location.height * scale,
-        x: transform(s.location.x),
-        y: transform(s.location.y)
+        x: transformX(s.location.x),
+        y: transformY(s.location.y)
     }
 });
 
@@ -238,8 +241,8 @@ stalls.forEach(stall => {
 
 export default {
     dimensions: {
-        width: transform(dimensions.width),
-        height: transform(dimensions.height)
+        width: transformX(dimensions.width),
+        height: transformY(dimensions.height)
     },
     stalls: stalls,
     products: [
