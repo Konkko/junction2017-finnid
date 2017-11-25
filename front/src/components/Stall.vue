@@ -20,11 +20,15 @@ export default {
     },
     statusClass() {
       const ratio = this.items.length / this.model.approxCapacity;
-      if (this.items.length === 0 || ratio <= (1/3)) {
+      if (this.items.length === 0) {
         return 'status-empty';
       }
-      else if (ratio <= 2/3) {
+      else if (ratio <= 1/3) {
         return 'status-low';
+      }
+      else if (ratio <= 2/3) {
+        
+        return 'status-medium';
       }
       else {
         return 'status-full'; 
@@ -45,7 +49,11 @@ export default {
   }
 
   .status-low {
-    background-color: #AA0;
+    background-color: #ff8300;
+  }
+
+  .status-medium {
+    background-color: #d6ff00;
   }
 
   .status-full {
