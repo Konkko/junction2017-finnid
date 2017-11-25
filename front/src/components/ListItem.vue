@@ -41,7 +41,7 @@
     methods: {
       generateStyles() {
         if (this.selected) {
-          return "cursor: pointer; background-color: #DEE5EE";
+          return "cursor: pointer; background-color: #849BB5";
         }
         return "cursor: pointer;";
       },
