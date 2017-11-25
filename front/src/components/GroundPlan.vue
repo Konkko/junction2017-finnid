@@ -1,5 +1,5 @@
 <template>
-  <div class="ground-plan" :style="style">
+  <div class="ground-plan" :class="{'heat-map': showHeatMap}" :style="style">
     <template v-for="stall in stalls">
       <Stall :model="stall" :items="getByStallId(stall.id)"></Stall>
     </template>
@@ -28,11 +28,12 @@
       Stall,
       HistoryRoute
     },
-    props: ['items', 'showHistory'],
+    props: ['items', 'showHistory', 'showHeatMap'],
     data() {
       return {
         stalls: DemoData.stalls,
-        checked: false
+        checked: false,
+        showHeatMap: false
       }
     },
     computed: {
@@ -58,6 +59,9 @@
     position: relative;
     border: 2px solid black;
     overflow: hidden;
+  }
+
+  .heat-map {
     background-image: url("../assets/heatmap.png");
     background-size: 100% 100%;
     background-color: rgba(255, 255, 255, 0.0);

@@ -33,9 +33,9 @@
     </script>
     <div id="app">
       <div style="float: left; width: 200px;">
-        <List :items="items" v-on:selectedItemOnList="onSelectItemOnList" v-on:checked="onChecked"/>
+        <List :items="items" v-on:selectedItemOnList="onSelectItemOnList" v-on:checked="onChecked" v-on:heatmap="onHeatmap"/>
       </div>
-      <GroundPlan style="float: left;" :items="items" :showHistory="showHistory" />
+      <GroundPlan style="float: left;" :items="items" :showHistory="showHistory" :showHeatMap="showHeatMap" />
     </div>
   </div>
 
@@ -143,13 +143,17 @@ export default {
     },
     onChecked(v) {
       this.showHistory = v;
+    },
+    onHeatmap(v) {
+      this.showHeatMap = v;
     }
   },
   data() {
     return {
       items: [],
       selectedId: null,
-      showHistory: false
+      showHistory: false,
+      showHeatMap: false
     }
   },
 }
