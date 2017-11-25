@@ -5,9 +5,39 @@ const instance = axios.create({
 })
 
 export default {
-    getAll() {
+    getAllEpcs() {
         return instance.get('Epc/GetAll').then(response => {
-            console.log(response);
+            response.json();
         });
     },
+
+    getEpcById(id) {
+        return instance.get('Epc/GetById/' + id).then(response => {
+            response.json();
+        });
+    },
+
+    getByEpc(epc) {
+        return instance.get('Epc/GetByEpc/' + epc).then(response => {
+            response.json();
+        });
+    },
+
+    getAllItems() {
+        return instance.get('Item/GetAll').then(response => {
+            response.json()
+        });
+    },
+
+    getItemById(id) {
+        return instance.get('Item/GetById/' + id).then(response => {
+            response.json();
+        });
+    },
+
+    getItemByEpc(epc) {
+        return instance.get('Item/GetByEpc/' + epc).then(response => {
+            response.json();
+        });
+    }
 }
