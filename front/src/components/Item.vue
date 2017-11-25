@@ -58,6 +58,10 @@
 </script>
 
 <style>
+  center {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
+
   .tooltip {
     display: block !important;
     z-index: 10000;
