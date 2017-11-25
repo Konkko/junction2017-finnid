@@ -4,7 +4,7 @@
         <h3 slot="header">Stall: {{modalItems.stallId}}</h3>
         <div slot="body">
             <div class="stall-item" v-for="item in modalItems.items">
-              ProductId: {{ item.productId }}
+              {{ item.name }} ({{item.count}})
             </div>
         </div>
       </modal>
@@ -15,6 +15,7 @@
 </template>
 <script>
 
+import demoData from '../demoData';
 export default {
   name: 'Stall',
   data() {
@@ -28,9 +29,25 @@ export default {
   methods: {
     onClick(items) {
       this.showModal = true;
+      var stallItems = {};
+      for(var i=0;i<items.length;i++){
+        var productId = items[i].productId; 
+        for(var j=0;j<demoData.products.length;j++){
+          var product = demoData.products[j];
+          if(product.id === productId){
+            if(!stallItems[productId]){
+              stallItems[productId] = { name: product.name, count: 1 };             
+            }
+            else{
+               stallItems[items[i].productId].count++;
+            }
+            break;
+          }
+        }
+      }
       this.modalItems = {
         stallId: items[0].stallId,
-        items: items
+        items: stallItems
       }
     }
   },
