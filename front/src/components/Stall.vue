@@ -97,7 +97,7 @@ export default {
 
   .stall {
     cursor: pointer;
-    border: 2px solid black;
+    border: 1px solid #444;
     position: absolute;
     display: flex;
     flex-direction: column;
