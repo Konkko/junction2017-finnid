@@ -19,12 +19,9 @@ module.exports = {
                             return parseInt(o.id) > parseInt(global.EPC[global.EPC.length-1].id)})
                     newValues = _.sortBy(newValues, ['id']);
                     global.EPC = global.EPC.concat(newValues);
-                    
                 }
-                global.EPC = res.data;
-                //console.log(global.EPC);
             })}
-            ,2000)
+            ,2000);
     }
 
 }
