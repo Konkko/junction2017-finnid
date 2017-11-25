@@ -60,6 +60,7 @@
   .ground-plan {
     position: relative;
     border: 1px solid black;
+    overflow: hidden;
   }
 
   img {
