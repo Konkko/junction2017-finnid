@@ -13,9 +13,9 @@
     props: ['item'],
     methods: {
       style(point) {
-        var len = point.epcCode.length-1;
+        //var len = point.epcCode.length-1;
         if(point.xlocation != this.item.lastLocation.x && point.ylocation != this.item.lastLocation.y) {
-            return "position: absolute; left: " + (point.xlocation - 5) + "px; top: " + (point.ylocation - 5) + "px; background-color: #"+ point.epcCode.substring(len-4,len) + "; width: 10px; height: 10px;opacity: " + this.getOpacity(new Date(point.lastread)) 
+            return "position: absolute; left: " + (point.xlocation - 5) + "px; top: " + (point.ylocation - 5) + "px; background-color: "+ point.color + "; width: 10px; height: 10px;opacity: " + this.getOpacity(new Date(point.lastread)) 
         }
         else {
             return "display: none"
@@ -43,10 +43,10 @@
 
     mounted() {
         setInterval(() => {
-            dm.getByEpc(this.item.epc, 10).then(x => {
+            dm.getByEpc(this.item.epc, 30).then(x => {
                 this.historyPoints = x;
             });
-        }, 2000);    
+        }, 1000);    
     }
   }
 </script>

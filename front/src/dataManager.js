@@ -11,13 +11,27 @@ const inputScale = 1/2.0;
 function transformEpc(epc) {
     epc.xlocation = (epc.xlocation * inputScale) + (demoData.dimensions.width / 2.0) - 150;
     epc.ylocation = (epc.ylocation * inputScale) + (demoData.dimensions.height / 2.0) - 100;
+    epc.color = colors[epc.epcCode];
 }
+
+function getRandomColor(epc) {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    colors[epc] = color;
+}
+var colors = {};
 
 export default {
 
     getByEpc(epc, amount) {
         if (epc.length > 6) {
             return instance.get('Epc/GetByEpc/' + epc + '/' + amount).then(response => {
+                if(!colors[epc]){
+                    getRandomColor(epc);
+                }
                 response.data.forEach(transformEpc);
                 return response.data;
             });
