@@ -1,7 +1,7 @@
 <template>
   <div class="ground-plan" :style="style">
     <template v-for="stall in stalls">
-      <Stall :model="stall" :items="getByStallId(stall.id)"></Stall>
+      <Stall :model="stall" :items="getByStallId(stall.id)" :selectedId="selectedId"></Stall>
     </template>
 
     <template v-for="(child, index) in looseItems">
@@ -28,7 +28,7 @@
       Stall,
       HistoryRoute
     },
-    props: ['items', 'showHistory'],
+    props: ['items', 'showHistory', 'selectedId'],
     data() {
       return {
         stalls: DemoData.stalls,

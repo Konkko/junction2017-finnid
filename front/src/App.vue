@@ -35,7 +35,7 @@
       <div style="float: left; width: 200px;">
         <List :items="items" v-on:selectedItemOnList="onSelectItemOnList" v-on:checked="onChecked"/>
       </div>
-      <GroundPlan style="float: left;" :items="items" :showHistory="showHistory" />
+      <GroundPlan style="float: left;" :items="items" :showHistory="showHistory" :selectedId="selectedId" />
     </div>
   </div>
 
