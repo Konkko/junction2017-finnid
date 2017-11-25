@@ -1,7 +1,5 @@
 <template>
   <div class="ground-plan" :style="style">
-    <img src="../assets/groundplan.jpg" />
-
     <template v-for="stall in stalls">
       <Stall :model="stall" :items="getByStallId(stall.id)"></Stall>
     </template>
@@ -43,8 +41,6 @@
           "height: " + d.height + "px;";
       },
       looseItems() {
-        //debugger;
-        //return this.items;
         return this.items.filter(i => i.stallId == null);
       }
     },
@@ -59,7 +55,7 @@
 <style>
   .ground-plan {
     position: relative;
-    border: 1px solid black;
+    border: 2px solid black;
     overflow: hidden;
   }
 
