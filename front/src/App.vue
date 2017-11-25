@@ -90,6 +90,7 @@ export default {
       }
 
       return {
+        epc: epc.epcCode,
         productId: epcCodeToProductId(epc.epcCode),
         lastLocation: location,
         stallId: this.itemToStall(location) 
