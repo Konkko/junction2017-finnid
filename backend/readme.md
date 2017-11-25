@@ -1,26 +1,25 @@
 API End Points
+X not working yet (or ever)
 
 Route                   Type    Description
 
-/Epc/GetAll             GET     Get sth
-/Epc/GetById/:id        GET     Get sth
-/Epc/GetByEpc/:epc      GET     Get sth
-/Epc                    POST    Add new tag to system
+/Epc/GetAll             GET     Get all data in history
+/Epc/GetById/:id        GET     Get a single datapoint by ID
+/Epc/GetByEpc/:epc      GET     Get location history of specified tag
+X /Epc                    POST    Add new tag to system
 
+/Item/GetAll            GET     Get all tags
+X /Item/GetById/:id       
+X /Item/GetByEpc/:epc
 
+X /products               GET     Get all products in an array
+X /products               POST    Add new product
 
-/Item/GetAll
-/Item/GetById/:id
-/Item/GetByEpc/:epc
+X /shelf                  GET     Get all shelves in an array
+X /shelf                  POST    Add new shelf
 
-/products               GET     Get all products in an array
-/products               POST    Add new product
-
-/shelf                  GET     Get all shelves in an array
-/shelf                  POST    Add new shelf
-
-/shelf/:id              GET     Get shelf info, including products[]
-/shelf/:id/products     POST    Add new product to shelf
+X /shelf/:id              GET     Get shelf info, including products[]
+X /shelf/:id/products     POST    Add new product to shelf
 
 ================================================================================
 
