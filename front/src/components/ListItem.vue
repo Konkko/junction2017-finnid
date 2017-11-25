@@ -10,11 +10,18 @@
 <script>
   export default {
     name: "ListItem",
-    props: ['name', 'product'],
+    props: ['name', 'product', 'lastSelected'],
     data() {
       return {
         selected: false,
         selectedId: null,
+      }
+    },
+    watch: {
+      lastSelected: function(val) {
+        if (val !== this.selectedId) {
+          this.selected = false;
+        }
       }
     },
     methods: {

@@ -1,120 +1,129 @@
 <template>
   <div id="app">
     <div style="float: left; width: 200px;">
-      <List :items="items" v-on:selectedItemOnList="onSelectItemOnList" />
+      <List :items="items" v-on:selectedItemOnList="onSelectItemOnList"/>
     </div>
-    <GroundPlan style="float: left;" :items="items" />
+    <GroundPlan style="float: left;" :items="items"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-import GroundPlan from './components/GroundPlan.vue'
-import List from './components/List.vue'
-import demoData from './demoData'
-import dataManager from './dataManager'
+  import HelloWorld from './components/HelloWorld'
+  import GroundPlan from './components/GroundPlan.vue'
+  import List from './components/List.vue'
+  import demoData from './demoData'
+  import dataManager from './dataManager'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld,
-    GroundPlan,
-    List
-  },
-  mounted() {
-    this.getAll();
-
-    setInterval(() => {
+  export default {
+    name: 'app',
+    components: {
+      HelloWorld,
+      GroundPlan,
+      List
+    },
+    mounted() {
       this.getAll();
-    }, 5000);
-  },
-  methods: {
-    getAll() {
-      dataManager.getAllItems().then(x => {
-        this.items = x.map(this.epcToItem);
-        console.log(this.items);
-      });
+
+      setInterval(() => {
+        this.getAll();
+      }, 5000);
     },
-    itemToStall(location) {
-      let bestIndex = -1;
-      let bestDelta = Number.MAX_VALUE;
+    methods: {
+      getAll() {
+        dataManager.getAllItems().then(x => {
+          let items = x.map(this.epcToItem);
 
-      const tolerance = 5.0;
-
-      for (let s = 0; s < demoData.stalls.length; s++) {
-        const stallLocation = demoData.stalls[s].location;
-
-        const dx1 = location.x - stallLocation.x;
-        const dx2 = location.x - (stallLocation.x + stallLocation.width);
-        let dx = Math.abs(dx1 + dx2);
-        dx -= stallLocation.width;
-        dx = Math.max(0, dx);
-
-        const dy1 = location.y - stallLocation.y;
-        const dy2 = location.y - (stallLocation.y + stallLocation.height);
-        let dy = Math.abs(dy1 + dy2);
-        dy -= stallLocation.height;
-        dy = Math.max(0, dy);
-
-        const delta = Math.sqrt((dx*dx) + (dy*dy));
-
-        if (delta < bestDelta && delta <= tolerance) {
-          bestDelta = delta;
-          bestIndex = s;
+          this.items = items.map(this.addHilightAttribute);
+        });
+      },
+      addHilightAttribute(item) {
+        if (this.selectedId !== null && item.productId !== null && this.selectedId === item.productId) {
+          item.hilight = true;
+        } else {
+          item.hilight = false;
         }
-      }
+        return item;
+      },
+      itemToStall(location) {
+        let bestIndex = -1;
+        let bestDelta = Number.MAX_VALUE;
 
-      if (bestIndex >= 0) {
-        return demoData.stalls[bestIndex].id;
-      }
-      else {
-        return null;
-      }
+        const tolerance = 5.0;
+
+        for (let s = 0; s < demoData.stalls.length; s++) {
+          const stallLocation = demoData.stalls[s].location;
+
+          const dx1 = location.x - stallLocation.x;
+          const dx2 = location.x - (stallLocation.x + stallLocation.width);
+          let dx = Math.abs(dx1 + dx2);
+          dx -= stallLocation.width;
+          dx = Math.max(0, dx);
+
+          const dy1 = location.y - stallLocation.y;
+          const dy2 = location.y - (stallLocation.y + stallLocation.height);
+          let dy = Math.abs(dy1 + dy2);
+          dy -= stallLocation.height;
+          dy = Math.max(0, dy);
+
+          const delta = Math.sqrt((dx * dx) + (dy * dy));
+
+          if (delta < bestDelta && delta <= tolerance) {
+            bestDelta = delta;
+            bestIndex = s;
+          }
+        }
+
+        if (bestIndex >= 0) {
+          return demoData.stalls[bestIndex].id;
+        }
+        else {
+          return null;
+        }
+      },
+      epcToItem(epc) {
+        const epcCodeToProductId = str => {
+          let num = 0;
+          for (let i = 0; i < str.length; i++) {
+            num += str.charCodeAt(i);
+          }
+          const productIndex = num % demoData.products.length;
+          return demoData.products[productIndex].id;
+        }
+
+        const worldScale = 1.0;
+
+        const location = {
+          x: epc.xlocation * worldScale,
+          y: epc.ylocation * worldScale
+        }
+
+        return {
+          epc: epc.epcCode,
+          productId: epcCodeToProductId(epc.epcCode),
+          lastLocation: location,
+          stallId: this.itemToStall(location)
+        }
+      },
+      onSelectItemOnList(selectedId) {
+        this.selectedId = selectedId;
+      },
     },
-    epcToItem(epc) {
-      const epcCodeToProductId = str => {
-        let num = 0;
-        for (let i = 0; i < str.length; i++) {
-          num += str.charCodeAt(i);
-        }
-        const productIndex = num % demoData.products.length;
-        return demoData.products[productIndex].id;
-      }
-
-      const worldScale = 1.0;
-
-      const location = {
-        x: epc.xlocation * worldScale,
-        y: epc.ylocation * worldScale
-      }
-
+    data() {
       return {
-        epc: epc.epcCode,
-        productId: epcCodeToProductId(epc.epcCode),
-        lastLocation: location,
-        stallId: this.itemToStall(location)
+        items: [],
+        selectedId: null
       }
     },
-    onSelectItemOnList(selectedId) {
-      this.selectedId = selectedId;
-    },
-  },
-  data() {
-    return {
-      items: [],
-      selectedId: null
-    }
-  },
-}
+  }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>
