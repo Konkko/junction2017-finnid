@@ -29,8 +29,29 @@ export default {
   methods: {
     getAll() {
       dataManager.getAllEpcs().then(x => {
-        console.log(x);
+        this.items = x.map(this.epcToItem);
+        console.log(this.items);
       });
+    },
+    epcToItem(epc) {
+      const epcCodeToProductId = str => {
+        let num = 0;
+        for (let i = 0; i < str.length; i++) {
+          num += str.charCodeAt(i);
+        }
+        const productIndex = num % demoData.products.length;
+        return demoData.products[productIndex].id;
+      }
+
+      const worldScale = 1.0;
+
+      return {
+        productId: epcCodeToProductId(epc.epcCode),
+        lastLocation: {
+          x: epc.xlocation * worldScale,
+          y: epc.ylocation * worldScale
+        }
+      }
     }
   },
   data() {
