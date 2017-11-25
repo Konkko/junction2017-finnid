@@ -10,6 +10,7 @@ import HelloWorld from './components/HelloWorld'
 import GroundPlan from './components/GroundPlan.vue'
 import List from './components/List.vue'
 import demoData from './demoData'
+import dataManager from './dataManager'
 
 export default {
   name: 'app',
@@ -18,9 +19,23 @@ export default {
     GroundPlan,
     List
   },
+  mounted() {
+    this.getAll();
+
+    setInterval(() => {
+      this.getAll();
+    }).bind(this, 1000);
+  },
+  methods: {
+    getAll() {
+      this.epcs = dataManager.getAllEpcs();
+      console.log(this.epcs);
+    }
+  },
   data() {
     return {
       items: demoData.items,
+      epcs: [],
     }
   }
 }
