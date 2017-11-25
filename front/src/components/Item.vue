@@ -13,7 +13,7 @@
     props: ['item'],
     computed: {
       style() {
-        return "position: absolute; left: " + (this.visualLocation.x - 8) + "px; top: " + (this.visualLocation.y - 12) + "px; width: 17px; height: 24px;";
+        return "position: absolute; left: " + (this.visualLocation.x - 8) + "px; top: " + (this.visualLocation.y - 25) + "px; width: 17px; height: 24px;";
       },
       location() {
         return this.item.lastLocation;
