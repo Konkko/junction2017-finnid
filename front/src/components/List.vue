@@ -6,7 +6,6 @@
         <!--<div class="stall-item" v-for="item in modalItems.items">-->
           <!--ProductId: {{ item.productId }}-->
         <!--</div>-->
-        <bar></bar>
         Much important analytics things...
       </div>
     </modal>
@@ -64,7 +63,8 @@
         selectedId: null,
         lastSelected: null,
         heatmap: false,
-        checked: false
+        checked: false,
+        showStatisticsModal: false
       }
     },
     watch: {
