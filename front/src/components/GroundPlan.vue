@@ -7,7 +7,7 @@
     </template>
 
     <template v-for="stall in stalls">
-      <Stall :model="stall" :items="getByStallId(stall.Id)"></Stall>
+      <Stall :model="stall" :items="getByStallId(stall.id)"></Stall>
     </template>
 
   </div>
