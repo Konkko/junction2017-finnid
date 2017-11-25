@@ -6,11 +6,12 @@ var express             = require("express");
 var router              = express.Router();
 //var faker               = require("faker");
 var axios               = require("axios");
+var _                   = require("lodash");
 
 var response = {res: "RESPOOOONSE"};
 
 router.get("/Epc/GetAll", function(req, res){
-        res.send(global.EPC);
+    res.send(global.EPC);
 });
 
 router.get("/Epc/GetById/:id", function(req, res){
