@@ -101,7 +101,7 @@ export default {
   },
   data() {
     return {
-      items: []
+      items: [],
       selectedId: null
     }
   },
