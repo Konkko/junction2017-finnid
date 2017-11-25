@@ -4,7 +4,6 @@
 
 var express             = require("express");
 var router              = express.Router();
-//var faker               = require("faker");
 var axios               = require("axios");
 var bodyParser          = require("body-parser");
 var _                   = require("lodash");
@@ -27,6 +26,15 @@ router.get("/Epc/GetByEpc/:epc", function(req, res) {
    res.send(JSON.stringify(epc));
 });
 
+//Returns :amount of latest datapoints of :epc
+router.get("/Epc/GetByEpc/:epc/:amount", function(req, res) {
+        var epc = _.filter(global.EPC, {epcCode: req.params.epc});
+        if(req.params.amount < epc.length) {
+            epc = epc.slice(epc.length - req.params.amount);
+        }
+       res.send(JSON.stringify(epc));
+});
+
 //All epc tags with latest location
 router.get("/Item/GetAll", function(req, res) {
     var uniqueEpc = _.uniqBy(global.EPC, 'epcCode');
@@ -35,10 +43,9 @@ router.get("/Item/GetAll", function(req, res) {
         var asd = _.findLast(global.EPC, function(o){
             return o.epcCode == uniqObj.epcCode;
         });
-        
         return asd;
-        
     });
+    
     res.send(JSON.stringify(response));
 });
 
