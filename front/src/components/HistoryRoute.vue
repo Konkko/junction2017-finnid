@@ -1,5 +1,6 @@
 <template>
-  <div class="historyRoute" :style="style">
+  <div>
+      <div class="historyRoute" v-for="point of historyPoints"  :style="style(point)"></div>
     <!--<img src="../assets/item.png" />-->
   </div>
 </template>
@@ -10,22 +11,29 @@
   export default {
     name: "HistoryRoute",
     props: ['item'],
-    computed: {
-      style() {
-        return "position: absolute; left: " + this.item.lastLocation.x + "px; top: " + this.item.lastLocation.y + "px; background-color: lightgreen; width: 10px; height: 10px;"
+    methods: {
+      style(point) {
+        if(point.xlocation != this.item.lastLocation.x && point.ylocation != this.item.lastLocation.y) {
+            return "position: absolute; left: " + point.xlocation + "px; top: " + point.ylocation + "px; background-color: lightgreen; width: 10px; height: 10px;"
+        }
+        else {
+            return "display: none"
+        }
       }
     },
     
     data() {
       return {
-
+          historyPoints: []
       }
     },
 
     mounted() {
-        dm.getByEpc(this.item.epc).then(x => {
-            console.log(x);
+        setInterval(() => {
+            dm.getByEpc(this.item.epc).then(x => {
+            this.historyPoints = x;
         });
+        }, 5000);    
     }
   }
 </script>

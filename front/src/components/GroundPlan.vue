@@ -7,7 +7,7 @@
     </template>
 
     <template v-for="(child, index) in looseItems">
-      <Item :location="child.lastLocation"></Item>
+      <Item :item="child"></Item>
     </template>
 
     <template v-for="item in items">
