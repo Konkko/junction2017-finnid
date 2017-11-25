@@ -188,7 +188,7 @@ let stalls = [
     }
 ]
 
-const scale = 2.0;
+const scale = 1.7;
 const dimensions = {
     width: 475,
     height: 450,

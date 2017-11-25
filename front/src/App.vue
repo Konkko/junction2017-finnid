@@ -32,7 +32,7 @@
       </transition>
     </script>
     <div id="app">
-      <div style="float: left; width: 200px;">
+      <div style="float: left; width: 270px; padding: 16px;">
         <List :items="items" v-on:selectedItemOnList="onSelectItemOnList" v-on:checked="onChecked" v-on:heatmap="onHeatmap" />
       </div>
       <GroundPlan style="float: left;" :items="items" :showHistory="showHistory" :showHeatMap="showHeatMap" :selectedId="selectedId" />
@@ -164,9 +164,7 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 .modal-mask {
   position: fixed;

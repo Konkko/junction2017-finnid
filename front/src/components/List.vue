@@ -18,14 +18,18 @@
     </div>
 
     <p style="color: black">Choose a product:</p>
-
-    <template v-for="(value, key) in products">
-      <ListItem :name="key" :product="value" v-on:selectedItemOnList="onSelectItemOnList" :lastSelected="lastSelected" />
-    </template>
+    <div class="list-wrapper">
+      <template v-for="(value, key) in products">
+        <ListItem :name="key" :product="value" v-on:selectedItemOnList="onSelectItemOnList" :lastSelected="lastSelected" />
+      </template>
+    </div>
   </div>
 </template>
 
 <style>
+  h1 {
+    margin-top: 0;
+  }
   .checkboxes-div {
     margin-bottom: 20px;
   }
