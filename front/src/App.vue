@@ -33,9 +33,9 @@
     </script>
     <div id="app">
       <div style="float: left; width: 270px; padding: 16px;">
-        <List :items="items" v-on:selectedItemOnList="onSelectItemOnList" v-on:checked="onChecked" v-on:heatmap="onHeatmap"/>
+        <List :items="items" v-on:selectedItemOnList="onSelectItemOnList" v-on:checked="onChecked" v-on:heatmap="onHeatmap" />
       </div>
-      <GroundPlan style="float: left;" :items="items" :showHistory="showHistory" :showHeatMap="showHeatMap" />
+      <GroundPlan style="float: left;" :items="items" :showHistory="showHistory" :showHeatMap="showHeatMap" :selectedId="selectedId" />
     </div>
   </div>
 

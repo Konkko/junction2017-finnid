@@ -8,7 +8,7 @@
             </div>
         </div>
       </modal>
-    <div class="stall" v-bind:class="[statusClass]" @click="onClick(items)"v-bind:style="style">
+    <div class="stall" v-bind:class="[statusClass, {highlight: stallHilight}]" @click="onClick(items)"v-bind:style="style">
     {{ items.length }} / {{ model.approxCapacity }}
     </div>
   </div>
@@ -20,10 +20,11 @@ export default {
   data() {
     return {
       showModal: false,
-      modalItems: {}
+      modalItems: {},
+      stallHilight: false
     }
   },
-  props: ['model', 'items'],
+  props: ['model', 'items', 'selectedId'],
   methods: {
     onClick(items) {
       this.showModal = true;
@@ -31,6 +32,16 @@ export default {
         stallId: items[0].stallId,
         items: items
       }
+    }
+  },
+  watch: {
+    selectedId: function(val) {
+      if (this.items[0] !== undefined && val === this.items[0].productId) {
+        this.stallHilight = true;
+      } else {
+        this.stallHilight = false;
+      }
+
     }
   },
   computed: {
@@ -62,6 +73,11 @@ export default {
 </script>
 
 <style scoped>
+  .highlight {
+    box-shadow: 0px 0px 10px 5px rgb(78, 192, 226) !important;
+    border: 20px solid rgb(71, 182, 211);
+  }
+
   .stall {
     cursor: pointer;
     border: 2px solid black;
