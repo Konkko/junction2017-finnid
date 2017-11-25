@@ -1,5 +1,6 @@
 <template>
   <div :style="style" :class="{hilightStyle: item.hilight}" :title="item.epc">
+    <img src="../assets/point.png" width="20" />
   </div>
 </template>
 
@@ -9,7 +10,7 @@
     props: ['item'],
     computed: {
       style() {
-        return "position: absolute; left: " + (this.item.lastLocation.x - 7) + "px; top: " + (this.item.lastLocation.y - 7) + "px; background-color: red; width: 15px; height: 15px;";
+        return "position: absolute; left: " + (this.item.lastLocation.x - 8) + "px; top: " + (this.item.lastLocation.y - 12) + "px; width: 17px; height: 24px;";
       }
     },
     methods: {
@@ -28,8 +29,12 @@
   }
 
   .hilightStyle {
-    background-color: blue !important;
-    width: 30px !important;
-    height: 30px !important;
+    /*background-color: blue !important;*/
+    /*width: 30px !important;*/
+    /*height: 30px !important;*/
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 3px solid rgba(81, 203, 238, 1);
   }
 </style>
