@@ -32,8 +32,7 @@
     data() {
       return {
         stalls: DemoData.stalls,
-        checked: false,
-        showHeatMap: false
+        checked: false
       }
     },
     computed: {

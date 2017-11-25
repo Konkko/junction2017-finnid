@@ -16,10 +16,15 @@ function transformEpc(epc) {
 export default {
 
     getByEpc(epc, amount) {
-        return instance.get('Epc/GetByEpc/' + epc + '/' + amount).then(response => {
-            response.data.forEach(transformEpc);
-            return response.data;
-        });
+        if (epc.length > 6) {
+            return instance.get('Epc/GetByEpc/' + epc + '/' + amount).then(response => {
+                response.data.forEach(transformEpc);
+                return response.data;
+            });
+        }
+        else {
+            return Promise.resolve([]);
+        }
     },
 
     getAllItems() {
