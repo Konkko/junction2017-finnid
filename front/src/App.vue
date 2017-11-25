@@ -27,9 +27,6 @@ export default {
     setInterval(() => {
       this.getAll();
     }, 5000);
-
-    this.itemToStall({x: 525, y: 525})
-
   },
   methods: {
     getAll() {
@@ -101,8 +98,7 @@ export default {
   },
   data() {
     return {
-      items: demoData.items,
-      epcs: [],
+      items: []
     }
   },
 }

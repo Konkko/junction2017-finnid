@@ -6,7 +6,7 @@
       <Stall :model="stall" :items="getByStallId(stall.id)"></Stall>
     </template>
 
-    <template v-for="(child, index) in items">
+    <template v-for="(child, index) in looseItems">
       <Item :location="child.lastLocation"></Item>
     </template>
 
@@ -41,6 +41,11 @@
         let d = DemoData.dimensions;
         return "width: " + d.width + "px;" +
           "height: " + d.height + "px;";
+      },
+      looseItems() {
+        //debugger;
+        //return this.items;
+        return this.items.filter(i => i.stallId == null);
       }
     },
     methods: {
