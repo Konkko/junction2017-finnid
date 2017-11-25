@@ -10,10 +10,10 @@
 <script>
   export default {
     name: "Item",
-    props: ['x', 'y'],
+    props: ['location'],
     computed: {
       style() {
-        return "position: absolute; top: " + this.x + "px; left: " + this.y + "px; background-color: red; width: 15px; height: 15px;"
+        return "position: absolute; top: " + this.location.x + "px; left: " + this.location.y + "px; background-color: red; width: 15px; height: 15px;"
       }
     },
     data() {

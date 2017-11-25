@@ -1,4 +1,5 @@
 import axios from 'axios';
+import demoData from 'demoData';
 
 const instance = axios.create({
     baseURL: 'http://localhost:8081/api/'
@@ -39,5 +40,9 @@ export default {
         return instance.get('Item/GetByEpc/' + epc).then(response => {
             response.json();
         });
+    }
+
+    getAllStalls() {
+        return demoData.stalls;
     }
 }

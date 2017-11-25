@@ -9,6 +9,7 @@
 import HelloWorld from './components/HelloWorld'
 import GroundPlan from './components/GroundPlan.vue'
 import List from './components/List.vue'
+import demoData from './demoData'
 
 export default {
   name: 'app',
@@ -19,18 +20,7 @@ export default {
   },
   data() {
     return {
-      items: [
-        {
-          name: "Iphone X",
-          x: 300,
-          y: 500
-        },
-        {
-          name: "Seinäkello",
-          x: 400,
-          y: 500
-        }
-      ],
+      items: demoData.items,
     }
   }
 }

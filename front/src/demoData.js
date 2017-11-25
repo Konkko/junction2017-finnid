@@ -1,6 +1,43 @@
 export default {
+    products: [
+        {
+            id: 1,
+            name: "Iphone X"
+        },
+        {
+            id: 2,
+            name: "Seinäkello"
+        }
+    ],
+    items: [
+        {
+            pdoructId: 1,
+            lastLocation: {
+                x: 300,
+                y: 500
+            }
+        },
+        {
+            pdoructId: 2,
+            lastLocation: {
+                x: 400,
+                y: 500
+            }
+        },
+        {
+            pdoructId: 1,
+            lastLocation: {/*TODO: should have content*/},
+            stallId: 1
+        },
+        {
+            pdoructId: 2,
+            lastLocation: {/*TODO: should have content*/},
+            stallId: 2
+        }
+    ],
     stalls: [
         {
+            id: 1,
             location: {
                 width: 50,
                 height: 50,
@@ -11,6 +48,7 @@ export default {
             productInstances: [{},{},{},{},{},{},{},{},{},{}]
         },
         {
+            id: 2,
             location: {
                 width: 50,
                 height: 50,
@@ -21,6 +59,7 @@ export default {
             productInstances: [{},{},{},{},{},{},{},{}]
         },
         {
+            id: 3,
             location: {
                 width: 50,
                 height: 50,
@@ -31,6 +70,7 @@ export default {
             productInstances: [{},{},{}]
         },
         {
+            id: 4,
             location: {
                 width: 50,
                 height: 50,

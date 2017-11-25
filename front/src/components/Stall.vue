@@ -1,6 +1,6 @@
 <template>
   <div class="stall" v-bind:class="[statusClass]" v-bind:style="style">
-   {{ model.productInstances.length }} / {{ model.approxCapacity }}
+   {{ items.length }} / {{ model.approxCapacity }}
   </div>
 </template>
 <script>
@@ -9,7 +9,7 @@ export default {
   data() {
     return {}
   },
-  props: ['model'],
+  props: ['model', 'items'],
   computed: {
     style() {
       const location = this.model.location;
@@ -19,8 +19,8 @@ export default {
         'top: ' + location.y + 'px;';
     },
     statusClass() {
-      const ratio = this.model.productInstances.length / this.model.approxCapacity;
-      if (this.model.productInstances.length === 0 || ratio <= (1/3)) {
+      const ratio = this.items.length / this.model.approxCapacity;
+      if (this.items.length === 0 || ratio <= (1/3)) {
         return 'status-empty';
       }
       else if (ratio <= 2/3) {

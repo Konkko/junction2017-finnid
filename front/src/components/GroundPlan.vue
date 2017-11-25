@@ -3,11 +3,11 @@
     <img src="../assets/groundplan.jpg" />
 
     <template v-for="(child, index) in items">
-      <Item :x="child.x" :y="child.y"></Item>
+      <Item :location="child.lastLocation"></Item>
     </template>
 
     <template v-for="stall in stalls">
-      <Stall :model="stall"></Stall>
+      <Stall :model="stall" :items="getByStallId(stall.Id)"></Stall>
     </template>
 
   </div>
@@ -28,6 +28,11 @@
     data() {
       return {
         stalls: DemoData.stalls
+      }
+    },
+    methods: {
+      getByStallId(stallId) {
+        return this.items.filter(s => s.stallId === stallId)
       }
     }
   }
