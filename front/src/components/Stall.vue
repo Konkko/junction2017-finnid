@@ -1,7 +1,7 @@
 <template>
   <div>
       <modal v-if="showModal" @close="showModal = false">
-        <h3 slot="header">Stall: {{modalItems.stallId}}</h3>
+        <h3 slot="header">Stall: {{model.id}}</h3>
         <div slot="body">
             <div class="stall-item" v-for="item in modalItems.items">
               {{ item.name }} ({{item.count}})
@@ -9,7 +9,8 @@
         </div>
       </modal>
     <div class="stall" v-bind:class="[statusClass, {highlight: stallHilight}]" @click="onClick(items)"v-bind:style="style">
-    {{ items.length }} / {{ model.approxCapacity }}
+      <div>{{ model.id }}</div>
+      <div>{{ Math.round((items.length / model.approxCapacity) * 100) }}%</div>
     </div>
   </div>
 </template>
@@ -46,7 +47,6 @@ export default {
         }
       }
       this.modalItems = {
-        stallId: items[0].stallId,
         items: stallItems
       }
     }
@@ -100,6 +100,7 @@ export default {
     border: 2px solid black;
     position: absolute;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
