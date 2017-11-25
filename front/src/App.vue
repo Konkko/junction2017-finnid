@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div style="float: left; width: 200px;">
-      <List :items="items" />
+      <List :items="items" v-on:selectedItemOnList="onSelectItemOnList" />
     </div>
     <GroundPlan style="float: left;" :items="items" />
   </div>
@@ -44,7 +44,7 @@ export default {
 
       for (let s = 0; s < demoData.stalls.length; s++) {
         const stallLocation = demoData.stalls[s].location;
-        
+
         const dx1 = location.x - stallLocation.x;
         const dx2 = location.x - (stallLocation.x + stallLocation.width);
         let dx = Math.abs(dx1 + dx2);
@@ -93,13 +93,17 @@ export default {
         epc: epc.epcCode,
         productId: epcCodeToProductId(epc.epcCode),
         lastLocation: location,
-        stallId: this.itemToStall(location) 
+        stallId: this.itemToStall(location)
       }
-    }
+    },
+    onSelectItemOnList(selectedId) {
+      this.selectedId = selectedId;
+    },
   },
   data() {
     return {
-      items: []
+      items: [],
+      selectedId: null
     }
   },
 }
