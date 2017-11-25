@@ -1,10 +1,13 @@
 <template>
-  <div v-on:click="isClicked" :selectedId="selectedId" :style="generateStyles()">
+  <div class="list-item" v-on:click="isClicked" :selectedId="selectedId" :style="generateStyles()">
       {{ name }}
   </div>
 </template>
 
 <style>
+  .list-item:hover {
+    background-color: #e5e7e8;
+  }
 </style>
 
 <script>
