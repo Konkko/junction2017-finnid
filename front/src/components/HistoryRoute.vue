@@ -63,7 +63,7 @@
 
     mounted() {
         setInterval(() => {
-            dm.getByEpc(this.item.epc, 30).then(x => {
+            dm.getByEpc(this.item.epc, 100).then(x => {
                 this.historyPoints = x;
             });
         }, 1000);    
