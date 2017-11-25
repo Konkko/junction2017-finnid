@@ -50,11 +50,11 @@ export default {
         return 'status-low';
       }
       else if (ratio <= 2/3) {
-        
+
         return 'status-medium';
       }
       else {
-        return 'status-full'; 
+        return 'status-full';
       }
     }
   }
@@ -63,11 +63,16 @@ export default {
 
 <style scoped>
   .stall {
+    cursor: pointer;
     border: 2px solid black;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .stall:hover {
+    box-shadow: 0 0 20px rgba(87, 116, 149, 1);
   }
 
   .status-empty {
