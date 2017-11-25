@@ -13,9 +13,9 @@
     props: ['item'],
     methods: {
       style(point) {
+        var len = point.epcCode.length-1;
         if(point.xlocation != this.item.lastLocation.x && point.ylocation != this.item.lastLocation.y) {
-            this.getOpacity(new Date(point.lastread));
-            return "position: absolute; left: " + (point.xlocation - 5) + "px; top: " + (point.ylocation - 5) + "px; background-color: lightgreen; width: 10px; height: 10px;"
+            return "position: absolute; left: " + (point.xlocation - 5) + "px; top: " + (point.ylocation - 5) + "px; background-color: #"+ point.epcCode.substring(len-4,len) + "; width: 10px; height: 10px;opacity: " + this.getOpacity(new Date(point.lastread)) 
         }
         else {
             return "display: none"
@@ -23,9 +23,15 @@
       },
       getOpacity(pointTime){
         var now = new Date();
-        console.log(now);
-        console.log(pointTime);
-        console.log(now.getTime() - pointTime.getTime());
+        pointTime.setHours(pointTime.getHours() + 2);
+        var dif = now.getTime() - pointTime.getTime(); 
+        if(dif < 10*60*1000){
+          //console.log(dif/60000 + " opa: " + (1-(dif/60000/10)));
+          return 1-(dif/60000/10);
+        }
+        else{
+          return "0";
+        }
       }
     },
     
