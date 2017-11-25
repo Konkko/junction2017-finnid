@@ -1,10 +1,13 @@
 <template>
-  <div class="point" :style="style" :class="{hilightStyle: item.hilight}" :title="item.epc">
-    <img src="../assets/point.png" width="20" />
+  <div v-tooltip="{content: '<center>' + this.itemName(this.item.productId) + '<br />' + this.item.epc + '</center>'}" class="point" :style="style"
+       :class="{hilightStyle: item.hilight}">
+    <img src="../assets/point.png" width="20"/>
   </div>
 </template>
 
 <script>
+  import demoData from '../demoData';
+
   export default {
     name: "Item",
     props: ['item'],
@@ -18,9 +21,10 @@
     },
     methods: {
       itemName(id) {
-          this.name = demoData.getProductName(id);
-          return this.name;
+        this.name = demoData.getProductName(id);
+        return this.name;
       }
+    },
     watch: {
       location(newLocation, oldLocation) {
         var vm = this
