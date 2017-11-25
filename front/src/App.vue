@@ -33,7 +33,7 @@
     </script>
     <div id="app">
       <div style="float: left; width: 200px;">
-        <List :items="items" />
+        <List :items="items" v-on:selectedItemOnList="onSelectItemOnList" />
       </div>
       <GroundPlan style="float: left;" :items="items" />
     </div>
@@ -61,16 +61,22 @@ export default {
     setInterval(() => {
       this.getAll();
     }, 5000);
-
-    this.itemToStall({x: 525, y: 525})
-
   },
   methods: {
     getAll() {
-      dataManager.getAllEpcs().then(x => {
-        this.items = x.map(this.epcToItem);
-        console.log(this.items);
+      dataManager.getAllItems().then(x => {
+        let items = x.map(this.epcToItem);
+        items = items.concat(demoData.items);
+        this.items = items.map(this.addHilightAttribute);
       });
+    },
+    addHilightAttribute(item) {
+      if (this.selectedId !== null && item.productId !== null && this.selectedId === item.productId) {
+        item.hilight = true;
+      } else {
+        item.hilight = false;
+      }
+      return item;
     },
     itemToStall(location) {
       let bestIndex = -1;
@@ -80,7 +86,7 @@ export default {
 
       for (let s = 0; s < demoData.stalls.length; s++) {
         const stallLocation = demoData.stalls[s].location;
-        
+
         const dx1 = location.x - stallLocation.x;
         const dx2 = location.x - (stallLocation.x + stallLocation.width);
         let dx = Math.abs(dx1 + dx2);
@@ -129,14 +135,17 @@ export default {
         epc: epc.epcCode,
         productId: epcCodeToProductId(epc.epcCode),
         lastLocation: location,
-        stallId: this.itemToStall(location) 
+        stallId: this.itemToStall(location)
       }
-    }
+    },
+    onSelectItemOnList(selectedId) {
+      this.selectedId = selectedId;
+    },
   },
   data() {
     return {
-      items: demoData.items,
-      epcs: [],
+      items: [],
+      selectedId: null
     }
   },
 }
