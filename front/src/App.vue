@@ -24,7 +24,7 @@ export default {
 
     setInterval(() => {
       this.getAll();
-    }, 1000);
+    }, 5000);
   },
   methods: {
     getAll() {
