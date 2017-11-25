@@ -58,6 +58,9 @@
       },
       checked: function (v) {
         this.$emit('checked', v);
+      },
+      heatmap: function (v) {
+        this.$emit('heatmap', v);
       }
     },
     methods: {
