@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-for="(value, key) in products">
-      <ListItem :name="key" :product="value" v-on:selectedItemOnList="onSelectItemOnList" />
+      <ListItem :name="key" :product="value" v-on:selectedItemOnList="onSelectItemOnList" :lastSelected="lastSelected" />
     </template>
   </div>
 </template>
@@ -26,6 +26,7 @@
       return {
         products: {},
         selectedId: null,
+        lastSelected: null
       }
     },
     watch: {
@@ -36,6 +37,7 @@
     methods: {
       onSelectItemOnList(selectedId) {
         this.selectedId = selectedId;
+        this.lastSelected = selectedId;
         this.$emit('selectedItemOnList', selectedId);
       },
       updateItems() {
