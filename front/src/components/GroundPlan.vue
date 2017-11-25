@@ -58,6 +58,9 @@
     position: relative;
     border: 2px solid black;
     overflow: hidden;
+    background-image: url("../assets/heatmap.png");
+    background-size: 100% 100%;
+    background-color: rgba(255, 255, 255, 0.0);
   }
 
   img {
