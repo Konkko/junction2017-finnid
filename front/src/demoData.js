@@ -248,11 +248,71 @@ export default {
     products: [
         {
             id: 1,
-            name: "Iphone X"
+            name: "Phone M8"
         },
         {
             id: 2,
-            name: "Seinäkello"
+            name: "Raspberry cake"
+        },
+        {
+            id: 3,
+            name: "TV Hyper-HD 320hz"
+        },
+        {
+            id: 4,
+            name: "Brick game console"
+        },
+        {
+            id: 5,
+            name: "Tarantula"
+        },
+        {
+            id: 6,
+            name: "Analog keyboard"
+        },
+        {
+            id: 7,
+            name: "Protein space cake"
+        },
+        {
+            id: 8,
+            name: "(Fake) VHS-player"
+        },
+        {
+            id: 9,
+            name: "Railgun (maybe fake)"
+        },
+        {
+            id: 10,
+            name: "Insanely good rye chips"
+        },
+        {
+            id: 11,
+            name: 'Laptop 22"'
+        },
+        {
+            id: 12,
+            name: "Sheep"
+        },
+        {
+            id: 13,
+            name: "Printer paper"
+        },
+        {
+            id: 14,
+            name: "Used Java consult"
+        },
+        {
+            id: 15,
+            name: "Coffee mug"
+        },
+        {
+            id: 16,
+            name: "Cutlery set"
+        },
+        {
+            id: 17,
+            name: "6-pack of happiness"
         }
     ],
     items: demoItems
