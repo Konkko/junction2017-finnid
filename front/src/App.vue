@@ -27,8 +27,6 @@ export default {
     setInterval(() => {
       this.getAll();
     }, 5000);
-
-    this.itemToStall({x: 525, y: 525})
   },
   methods: {
     getAll() {
@@ -81,14 +79,14 @@ export default {
         }
         const productIndex = num % demoData.products.length;
         return demoData.products[productIndex].id;
-      };
+      }
 
       const worldScale = 1.0;
 
       const location = {
         x: epc.xlocation * worldScale,
         y: epc.ylocation * worldScale
-      };
+      }
 
       return {
         epc: epc.epcCode,
@@ -103,9 +101,8 @@ export default {
   },
   data() {
     return {
-      selectedId: null,
-      items: demoData.items,
-      epcs: [],
+      items: []
+      selectedId: null
     }
   },
 }

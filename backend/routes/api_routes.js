@@ -24,7 +24,7 @@ router.get("/Epc/GetById/:id", function(req, res){
 router.get("/Epc/GetByEpc/:epc", function(req, res) {
     var epc = _.filter(global.EPC, {epcCode: req.params.epc});
 
-   res.send(JSON.stringify({epc}));
+   res.send(JSON.stringify(epc));
 });
 
 //All epc tags with latest location
