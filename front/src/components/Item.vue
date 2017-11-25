@@ -1,5 +1,5 @@
 <template>
-  <div :style="style" :class="{hilightStyle: item.hilight}" :title="item.epc">
+  <div class="point" :style="style" :class="{hilightStyle: item.hilight}" :title="item.epc">
     <img src="../assets/point.png" width="20" />
   </div>
 </template>
@@ -26,6 +26,11 @@
 <style>
   .item {
     border: 1px solid black;
+  }
+
+  .point:hover {
+    cursor: pointer;
+    transform: scale(1.1);
   }
 
   .hilightStyle {
