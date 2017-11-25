@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     getAll() {
-      dataManager.getAllEpcs().then(x => {
+      dataManager.getAllItems().then(x => {
         this.items = x.map(this.epcToItem);
         console.log(this.items);
       });
