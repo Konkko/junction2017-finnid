@@ -10,11 +10,16 @@
       <Item :location="child.lastLocation"></Item>
     </template>
 
+    <template v-for="item in items">
+      <HistoryRoute :item="item"/>
+    </template>
+
   </div>
 </template>
 
 <script>
   import Item from './Item.vue';
+  import HistoryRoute from './HistoryRoute.vue'
   import Stall from './Stall.vue';
   import DemoData from '../demoData';
 
@@ -22,7 +27,8 @@
     name: "GroundPlan",
     components: {
       Item,
-      Stall
+      Stall,
+      HistoryRoute
     },
     props: ['items'],
     data() {
