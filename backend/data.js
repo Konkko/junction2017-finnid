@@ -4,9 +4,6 @@ var _               = require("lodash");
 
 
 module.exports = {
-//    initiate: function() {
-//        global.product
-//    },
     
     listen: function() {
         setInterval(function(){
@@ -21,7 +18,7 @@ module.exports = {
                     global.EPC = global.EPC.concat(newValues);
                 }
             })}
-            ,2000);
+            ,1000);
     }
 
 }

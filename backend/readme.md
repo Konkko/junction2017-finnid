@@ -8,7 +8,7 @@ Route                   Type    Description
 /Epc/GetByEpc/:epc      GET     Get location history of specified tag
 X /Epc                    POST    Add new tag to system
 
-/Item/GetAll            GET     Get all tags
+/Item/GetAll            GET     Get all tags with the latest location data
 X /Item/GetById/:id       
 X /Item/GetByEpc/:epc
 
