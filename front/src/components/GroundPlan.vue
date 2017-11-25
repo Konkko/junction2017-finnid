@@ -56,8 +56,11 @@
 <style>
   .ground-plan {
     position: relative;
-    border: 2px solid black;
+    border: 2px solid gray;
     overflow: hidden;
+    background-color: #DEE5EE;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+
   }
 
   .heat-map {
