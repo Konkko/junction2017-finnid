@@ -38,7 +38,7 @@
       <GroundPlan style="float: left;" :items="items" />
     </div>
   </div>
-  
+
 </template>
 
 <script>
