@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <List :items="items" />
-    <GroundPlan :items="items" />
+    <div style="float: left; width: 200px;">
+      <List :items="items" />
+    </div>
+    <GroundPlan style="float: left;" :items="items" />
   </div>
 </template>
 
@@ -101,7 +103,7 @@ export default {
       items: demoData.items,
       epcs: [],
     }
-  }
+  },
 }
 </script>
 

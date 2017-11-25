@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ name }}
+      {{ name }}
   </div>
 </template>
 
@@ -10,10 +10,9 @@
 <script>
   export default {
     name: "ListItem",
-    props: ['name'],
+    props: ['name', 'product'],
     data() {
       return {
-
       }
     }
   }
