@@ -1,15 +1,38 @@
 <template>
-  <div class="stall" v-bind:class="[statusClass]" v-bind:style="style">
-   {{ items.length }} / {{ model.approxCapacity }}
+  <div>
+      <modal v-if="showModal" @close="showModal = false">
+        <h3 slot="header">Stall: {{modalItems.stallId}}</h3>
+        <div slot="body">
+            <div class="stall-item" v-for="item in modalItems.items">
+              ProductId: {{ item.productId }}
+            </div>
+        </div>
+      </modal>
+    <div class="stall" v-bind:class="[statusClass]" @click="onClick(items)"v-bind:style="style">
+    {{ items.length }} / {{ model.approxCapacity }}
+    </div>
   </div>
 </template>
 <script>
+
 export default {
   name: 'Stall',
   data() {
-    return {}
+    return {
+      showModal: false,
+      modalItems: {}
+    }
   },
   props: ['model', 'items'],
+  methods: {
+    onClick(items) {
+      this.showModal = true;
+      this.modalItems = {
+        stallId: items[0].stallId,
+        items: items
+      }
+    }
+  },
   computed: {
     style() {
       const location = this.model.location;
@@ -50,5 +73,8 @@ export default {
 
   .status-full {
     background-color: #0F0;
+  }
+  .stall-item{
+    text-align: left;
   }
 </style>
