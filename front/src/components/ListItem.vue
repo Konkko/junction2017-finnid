@@ -1,6 +1,6 @@
 <template>
   <div class="list-item" v-on:click="isClicked" :selectedId="selectedId" :style="generateStyles()">
-      {{ name }}
+      {{ name }} ({{ product.length }})
   </div>
 </template>
 
