@@ -30,9 +30,9 @@
 
     mounted() {
         setInterval(() => {
-            dm.getByEpc(this.item.epc).then(x => {
-            this.historyPoints = x;
-        });
+            dm.getByEpc(this.item.epc, 10).then(x => {
+                this.historyPoints = x;
+            });
         }, 5000);    
     }
   }
@@ -41,6 +41,6 @@
 <style>
   .historyRoute {
       border: 1px solid black;
-      border-radius: 10px 
+      border-radius: 15px 
   }
 </style>

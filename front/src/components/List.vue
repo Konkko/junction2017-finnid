@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div class="history-checkbox">
+      <input type="checkbox">Show history
+    </div>
+
     <template v-for="(value, key) in products">
       <ListItem :name="key" :product="value" v-on:selectedItemOnList="onSelectItemOnList" :lastSelected="lastSelected" />
     </template>
@@ -7,6 +11,9 @@
 </template>
 
 <style>
+  .history-checkbox {
+    margin-bottom: 20px;
+  }
 </style>
 
 <script>

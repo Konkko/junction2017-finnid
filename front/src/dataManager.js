@@ -14,8 +14,8 @@ function transformEpc(epc) {
 
 export default {
 
-    getByEpc(epc) {
-        return instance.get('Epc/GetByEpc/' + epc).then(response => {
+    getByEpc(epc, amount) {
+        return instance.get('Epc/GetByEpc/' + epc + '/' + amount).then(response => {
             response.data.forEach(transformEpc);
             return response.data;
         });
