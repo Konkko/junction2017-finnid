@@ -21,6 +21,8 @@ module.exports = {
                     global.EPC = global.EPC.concat(newValues);
                     
                 }
+                global.EPC = res.data;
+                //console.log(global.EPC);
             })}
             ,2000)
     }

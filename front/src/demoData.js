@@ -11,26 +11,26 @@ export default {
     ],
     items: [
         {
-            pdoructId: 1,
+            productId: 1,
             lastLocation: {
                 x: 300,
                 y: 500
             }
         },
         {
-            pdoructId: 2,
+            productId: 2,
             lastLocation: {
                 x: 400,
                 y: 500
             }
         },
         {
-            pdoructId: 1,
+            productId: 1,
             lastLocation: {/*TODO: should have content*/},
             stallId: 1
         },
         {
-            pdoructId: 2,
+            productId: 2,
             lastLocation: {/*TODO: should have content*/},
             stallId: 2
         }

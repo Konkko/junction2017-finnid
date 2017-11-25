@@ -2,12 +2,12 @@
   <div class="ground-plan">
     <img src="../assets/groundplan.jpg" />
 
-    <template v-for="(child, index) in items">
-      <Item :location="child.lastLocation"></Item>
+    <template v-for="stall in stalls">
+      <Stall :model="stall" :items="getByStallId(stall.id)"></Stall>
     </template>
 
-    <template v-for="stall in stalls">
-      <Stall :model="stall" :items="getByStallId(stall.Id)"></Stall>
+    <template v-for="(child, index) in items">
+      <Item :location="child.lastLocation"></Item>
     </template>
 
   </div>

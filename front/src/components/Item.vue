@@ -1,11 +1,8 @@
 <template>
-  <div :style="style">
+  <div class="item" :style="style">
     <!--<img src="../assets/item.png" />-->
   </div>
 </template>
-
-<style>
-</style>
 
 <script>
   export default {
@@ -13,7 +10,7 @@
     props: ['location'],
     computed: {
       style() {
-        return "position: absolute; top: " + this.location.x + "px; left: " + this.location.y + "px; background-color: red; width: 15px; height: 15px;"
+        return "position: absolute; left: " + this.location.x + "px; top: " + this.location.y + "px; background-color: red; width: 15px; height: 15px;"
       }
     },
     data() {
@@ -23,3 +20,9 @@
     }
   }
 </script>
+
+<style>
+  .item {
+    border: 1px solid black;
+  }
+</style>
