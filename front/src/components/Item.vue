@@ -1,6 +1,5 @@
 <template>
   <div :style="style" :class="{hilightStyle: item.hilight}" :title="item.epc">
-    <!--<img src="../assets/item.png" />-->
   </div>
 </template>
 
@@ -10,7 +9,7 @@
     props: ['item'],
     computed: {
       style() {
-        return "position: absolute; left: " + this.item.lastLocation.x + "px; top: " + this.item.lastLocation.y + "px; background-color: red; width: 15px; height: 15px;";
+        return "position: absolute; left: " + (this.item.lastLocation.x - 7) + "px; top: " + (this.item.lastLocation.y - 7) + "px; background-color: red; width: 15px; height: 15px;";
       }
     },
     methods: {

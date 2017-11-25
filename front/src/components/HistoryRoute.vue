@@ -14,7 +14,7 @@
     methods: {
       style(point) {
         if(point.xlocation != this.item.lastLocation.x && point.ylocation != this.item.lastLocation.y) {
-            return "position: absolute; left: " + point.xlocation + "px; top: " + point.ylocation + "px; background-color: lightgreen; width: 10px; height: 10px;"
+            return "position: absolute; left: " + (point.xlocation - 5) + "px; top: " + (point.ylocation - 5) + "px; background-color: lightgreen; width: 10px; height: 10px;"
         }
         else {
             return "display: none"
