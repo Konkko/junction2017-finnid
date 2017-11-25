@@ -1,18 +1,37 @@
 <template>
   <div id="app">
-    <GroundPlan />
+    <List :items="items" />
+    <GroundPlan :items="items" />
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld'
 import GroundPlan from './components/GroundPlan.vue'
+import List from './components/List.vue'
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
-    GroundPlan
+    GroundPlan,
+    List
+  },
+  data() {
+    return {
+      items: [
+        {
+          name: "Iphone X",
+          x: 300,
+          y: 500
+        },
+        {
+          name: "Seinäkello",
+          x: 400,
+          y: 500
+        }
+      ],
+    }
   }
 }
 </script>

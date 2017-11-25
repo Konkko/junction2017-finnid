@@ -9,7 +9,7 @@
     <template v-for="stall in stalls">
       <Stall :model="stall"></Stall>
     </template>
-    
+
   </div>
 </template>
 
@@ -24,18 +24,9 @@
       Item,
       Stall
     },
+    props: ['items'],
     data() {
       return {
-        items: [
-          {
-            x: 300,
-            y: 500
-          },
-          {
-            x: 400,
-            y: 500
-          }
-        ],
         stalls: DemoData.stalls
       }
     }
