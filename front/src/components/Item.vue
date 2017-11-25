@@ -1,11 +1,8 @@
 <template>
-  <div :style="style">
+  <div class="item" :style="style">
     <!--<img src="../assets/item.png" />-->
   </div>
 </template>
-
-<style>
-</style>
 
 <script>
   export default {
@@ -23,3 +20,9 @@
     }
   }
 </script>
+
+<style>
+  .item {
+    border: 1px solid black;
+  }
+</style>
