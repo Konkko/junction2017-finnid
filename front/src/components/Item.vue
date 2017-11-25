@@ -10,14 +10,38 @@
     props: ['item'],
     computed: {
       style() {
-        return "position: absolute; left: " + (this.item.lastLocation.x - 8) + "px; top: " + (this.item.lastLocation.y - 12) + "px; width: 17px; height: 24px;";
+        return "position: absolute; left: " + (this.visualLocation.x - 8) + "px; top: " + (this.visualLocation.y - 12) + "px; width: 17px; height: 24px;";
+      },
+      location() {
+        return this.item.lastLocation;
       }
     },
-    methods: {
+    watch: {
+      location(newLocation, oldLocation) {
+        var vm = this
+        function animate () {          
+          const dx = vm.location.x - vm.visualLocation.x;
+          const dy = vm.location.y - vm.visualLocation.y;
+
+          const distance = Math.sqrt((dx*dx)+(dy*dy));
+
+          if (distance <= 1.0) {
+            vm.visualLocation = newLocation;            
+          }
+          else {
+            vm.visualLocation = {
+              x: vm.visualLocation.x + (dx * 0.05),
+              y: vm.visualLocation.y + (dy * 0.05)
+            };
+            requestAnimationFrame(animate);
+          }
+        }
+        animate();
+      }
     },
     data() {
       return {
-
+        visualLocation: this.item.lastLocation
       }
     }
   }
