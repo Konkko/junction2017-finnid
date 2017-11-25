@@ -32,6 +32,7 @@ export default {
     getAll() {
       dataManager.getAllItems().then(x => {
         this.items = x.map(this.epcToItem);
+        this.items = this.items.concat(demoData.items);
         console.log(this.items);
       });
     },
