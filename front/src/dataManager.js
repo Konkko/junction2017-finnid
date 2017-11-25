@@ -1,8 +1,9 @@
 import axios from 'axios';
 import demoData from './demoData';
 
+var isDev = true;
 const instance = axios.create({
-    baseURL: 'http://localhost:8081/api/'
+    baseURL: isDev ? 'http://localhost:8081/api/' : 'http://13.74.147.213/api/'
 })
 
 const inputScale = 1/2.0;
