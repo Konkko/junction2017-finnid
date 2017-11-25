@@ -10,7 +10,7 @@ var axios               = require("axios");
 var response = {res: "RESPOOOONSE"};
 
 router.get("/Epc/GetAll", function(req, res){
-    res.send(JSON.stringify(response));
+        res.send(global.EPC);
 });
 
 router.get("/Epc/GetById/:id", function(req, res){

@@ -3,12 +3,14 @@
 var express             = require("express");
 var bodyParser          = require("body-parser");
 var apiRoutes           = require("./routes/api_routes");
+var data                = require("./data");
 
 var app                 = express();
 var IP                  = process.env.IP,
     PORT                = process.env.PORT || 8081;
 
 app.use(bodyParser.urlencoded({extended: true}));
+data.listen();
 
 // REST routes
 app.use("/api", apiRoutes);
