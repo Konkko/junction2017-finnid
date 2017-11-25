@@ -1,5 +1,5 @@
 <template>
-  <div v-on:click="isClicked" :style="generateStyles()">
+  <div v-on:click="isClicked" :selectedId="selectedId" :style="generateStyles()">
       {{ name }}
   </div>
 </template>
@@ -13,7 +13,8 @@
     props: ['name', 'product'],
     data() {
       return {
-        selected: false
+        selected: false,
+        selectedId: null,
       }
     },
     methods: {
@@ -24,8 +25,16 @@
         return "cursor: pointer;";
       },
       isClicked() {
-        this.selected = !this.selected;
+        if (this.selected) {
+          this.selected = false;
+          this.selectedId = 0;
+        } else if (this.selected === false) {
+          this.selected = true;
+          this.selectedId = this.product[0].productId;
+        }
+
+        this.$emit('selectedItemOnList', this.selectedId);
       }
-    }
+    },
   }
 </script>
