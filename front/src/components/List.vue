@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="history-checkbox">
-      <input type="checkbox">Show history
+      <input type="checkbox" v-model="checked">Show history
     </div>
 
     <template v-for="(value, key) in products">
@@ -33,12 +33,16 @@
       return {
         products: {},
         selectedId: null,
-        lastSelected: null
+        lastSelected: null,
+        checked: false
       }
     },
     watch: {
       items: function () {
           this.updateItems()
+      },
+      checked: function (v) {
+        this.$emit('checked', v);
       }
     },
     methods: {

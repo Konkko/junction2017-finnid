@@ -8,7 +8,7 @@
       <Item :item="child"></Item>
     </template>
 
-    <template v-for="item in items">
+    <template v-if="showHistory" v-for="item in items">
       <HistoryRoute :item="item"/>
     </template>
 
@@ -28,10 +28,11 @@
       Stall,
       HistoryRoute
     },
-    props: ['items'],
+    props: ['items', 'showHistory'],
     data() {
       return {
-        stalls: DemoData.stalls
+        stalls: DemoData.stalls,
+        checked: false
       }
     },
     computed: {
