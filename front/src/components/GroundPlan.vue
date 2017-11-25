@@ -60,7 +60,7 @@
     overflow: hidden;
     background-color: #DEE5EE;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-
+    margin-top: 15px;
   }
 
   .heat-map {
