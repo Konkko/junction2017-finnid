@@ -1,5 +1,5 @@
 <template>
-  <div class="ground-plan">
+  <div class="ground-plan" :style="style">
     <img src="../assets/groundplan.jpg" />
 
     <template v-for="stall in stalls">
@@ -30,6 +30,13 @@
         stalls: DemoData.stalls
       }
     },
+    computed: {
+      style() {
+        let d = DemoData.dimensions;
+        return "width: " + d.width + "px;" +
+          "height: " + d.height + "px;";
+      }
+    },
     methods: {
       getByStallId(stallId) {
         return this.items.filter(s => s.stallId === stallId)
@@ -41,6 +48,7 @@
 <style>
   .ground-plan {
     position: relative;
+    border: 1px solid black;
   }
 
   img {
