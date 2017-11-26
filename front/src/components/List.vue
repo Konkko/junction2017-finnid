@@ -14,11 +14,11 @@
       <input type="checkbox" v-model="heatmap">Show heatmap<br />
       <input type="checkbox" v-model="checked">Show history<br /><br />
       <button class="button" @click="showStatistics()">Statistics</button>
-    </div>
-
-    <p style="color: black">Choose a product:</p>
+    </div>    
+    <input type="text" v-model="search" placeholder="search" style="width: 100%;">
+    <p style="color: black">Products:</p>
     <div class="list-wrapper">
-      <template v-for="(value, key) in products">
+      <template v-for="(value, key) in foundProducts">
         <ListItem :name="key" :product="value" v-on:selectedItemOnList="onSelectItemOnList" :lastSelected="lastSelected" />
       </template>
     </div>
@@ -69,7 +69,8 @@
         lastSelected: null,
         heatmap: false,
         checked: false,
-        showStatisticsModal: false
+        showStatisticsModal: false,
+        search: ''
       }
     },
     watch: {
@@ -81,6 +82,19 @@
       },
       heatmap: function (v) {
         this.$emit('heatmap', v);
+      }
+    },
+    computed: {
+      foundProducts() {
+        let result = {};
+        for (let key in this.products) {
+            if (this.products.hasOwnProperty(key)) {
+              if (key.toLowerCase().includes(this.search.toLowerCase())) {
+                result[key] = this.products[key];
+              }
+            }
+        }
+        return result;
       }
     },
     methods: {
