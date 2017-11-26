@@ -1,5 +1,5 @@
 <template>
-  <div v-tooltip="{content: '<center>' + this.itemName(this.item.productId) + '<br />' + this.item.epc + '</center>'}" class="point" :style="style"
+  <div @mouseover="mouseOver(item)" @mouseout="mouseOut(item)" v-tooltip="{content: '<center>' + this.itemName(this.item.productId) + '<br />' + this.item.epc + '</center>'}" class="point" :style="style"
        :class="{hilightStyle: item.hilight}">
     <img src="../assets/point.png" width="20"/>
   </div>
@@ -23,6 +23,12 @@
       itemName(id) {
         this.name = demoData.getProductName(id);
         return this.name;
+      },
+      mouseOver: function(item) {
+        item.showHistory = true;
+      },
+      mouseOut: function(item) {
+        item.showHistory = false;
       }
     },
     watch: {

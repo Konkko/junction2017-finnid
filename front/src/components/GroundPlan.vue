@@ -8,8 +8,8 @@
       <Item :item="child"></Item>
     </template>
 
-    <template v-if="showHistory" v-for="item in items">
-      <HistoryRoute :item="item"/>
+    <template v-for="item in items">
+      <HistoryRoute :item="item" :showHistory="showHistory"/>
     </template>
 
   </div>
