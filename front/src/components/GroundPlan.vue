@@ -4,9 +4,7 @@
       <Stall :model="stall" :items="getByStallId(stall.id)" :selectedId="selectedId"></Stall>
     </template>
 
-    <template v-for="(child, index) in looseItems">
-      <Item :item="child"></Item>
-    </template>
+    <Item v-for="(child, index) in looseItems" :key="child.epc" :item="child"></Item>
 
     <template v-if="showHistory" v-for="item in items">
       <HistoryRoute :item="item"/>
