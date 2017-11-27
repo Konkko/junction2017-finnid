@@ -6,8 +6,8 @@
 
     <Item v-for="(child, index) in looseItems" :key="child.epc" :item="child"></Item>
 
-    <template v-if="showHistory" v-for="item in items">
-      <HistoryRoute :item="item"/>
+    <template v-for="item in items">
+      <HistoryRoute :item="item" :showHistory="showHistory"/>
     </template>
 
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-show="item.showHistory || showHistory">
     <div class="routeLine" v-for="pair of pointPairs"  :style="lineStyle(pair)"></div>
     <div class="historyRoute" v-for="point of historyPoints"  :style="style(point)"></div>
   </div>
@@ -10,7 +10,7 @@
 
   export default {
     name: "HistoryRoute",
-    props: ['item'],
+    props: ['item', 'showHistory'],
     methods: {
       style(point) {
         //var len = point.epcCode.length-1;
@@ -62,11 +62,11 @@
     },
 
     mounted() {
-        setInterval(() => {
-            dm.getByEpc(this.item.epc, 100).then(x => {
-                this.historyPoints = x;
-            });
-        }, 1000);    
+      setInterval(() => {
+          dm.getByEpc(this.item.epc, 100).then(x => {
+            this.historyPoints = x;
+          });
+      }, 1000);    
     }
   }
 </script>
